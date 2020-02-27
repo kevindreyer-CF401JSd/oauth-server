@@ -25,7 +25,7 @@ async function getRemoteUsername (token) {
     .get(REMOTE_API_ENDPOINT)
     // .set('Authorization', `token ${token}`)
     // .set('user-agent', 'express-app')
-  return response.body.login
+  return response.body.username;
 }
 
 async function getUser (username) {
