@@ -30,7 +30,7 @@ async function getRemoteUsername (token) {
 
 async function getUser (username) {
   // console.log('username in GetUser',username);
-  const user = await User.findOneAndUpdate({ username }, { username }, { new: true, upsert: true })
+  const user = await User.findOneAndUpdate({ username }, new User({ username }), { new: true, upsert: true })
   const token = user.generateToken()
   return [user, token]
 }
