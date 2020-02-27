@@ -12,8 +12,8 @@ Did Lab with Ada Cai
 
 [GitLab OAuth documentation](https://docs.gitlab.com/ee/api/oauth2.html)
 
-Step 1: request Authorization Code
-Step 2: receive Access Token
-Step 3: get username
-make jwt token
+- Step 1: request Authorization Code
+- Step 2: receive Access Token
+- Step 3: get username
+- make jwt token
 
