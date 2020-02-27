@@ -22,7 +22,7 @@ async function exchangeCodeForToken (code) {
 
 async function getRemoteUsername (token) {
   const response = await superagent
-    .get(REMOTE_API_ENDPOINT)
+    .get(`${REMOTE_API_ENDPOINT}?access_token=${token}`)
     // .set('Authorization', `token ${token}`)
     // .set('user-agent', 'express-app')
   return response.body.username;
