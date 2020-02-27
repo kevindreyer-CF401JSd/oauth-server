@@ -4,7 +4,8 @@
   "description": "App that performs an OAuth handshake.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
     "nodemon": "^2.0.2"
   },
   "dependencies": {
+    "base-64": "^0.1.0",
     "bcrypt": "^4.0.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",

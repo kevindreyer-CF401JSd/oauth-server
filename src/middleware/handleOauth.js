@@ -37,6 +37,7 @@ async function getUser (username) {
 
 async function handleOauth (req, res, next) {
   try {
+    // console.log('req.body', req.body);
     const { code } = req.query
     console.log('(1) CODE:', code)
     const remoteToken = await exchangeCodeForToken(req.query.code)

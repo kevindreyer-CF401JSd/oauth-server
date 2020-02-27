@@ -7,16 +7,20 @@
   <body>
     <main>
       <h1>Click below to login with GitHub</h1>
-      <a href="#" id="oauth">Login</a>
+      <a href="/startoauth" id="oauth">Login</a>
     </main>
 
     <script>
-      const URL = 'https://api.twitter.com/oauth/request_token'
+      const URL = 'https://api.twitter.com/oauth/request_token';
+      const callBack = ''
       const options = {
-        client_id: 'GZDPfRPHCdDjaSMJTNXU0xSJd',
-        redirect_uri: 'http://localhost:3005/oauth',
-        scope: '',
-        state: 'this is unguessable! mwahahaha'
+        oauth_nonce: "",
+        oauth_callback: encodeURIComponent('http://localhost:3005/oauth'),
+        oauth_timestamp: "",
+        oauth_consumer_key: "GZDPfRPHCdDjaSMJTNXU0xSJd",
+        oauth_signature: "",
+        oauth_version: "1.0",
+        state: 'this is my twitter secret state'
       }
 
       const queryString = Object.keys(options).map(key => {
