@@ -1,6 +1,5 @@
-node_modules
 
-# 401 JS
+node_modules
 db
 .env
 temp
