@@ -6,21 +6,18 @@
   </head>
   <body>
     <main>
-      <h1>Click below to login with GitHub</h1>
-      <a href="/startoauth" id="oauth">Login</a>
+      <h1>Click below to login with GitLab</h1>
+      <a href="/oauth" id="oauth">Login</a>
     </main>
 
     <script>
-      const URL = 'https://api.twitter.com/oauth/request_token';
-      const callBack = ''
+      const URL = 'https://gitlab.com/oauth/authorize'
       const options = {
-        oauth_nonce: "",
-        oauth_callback: encodeURIComponent('http://localhost:3005/oauth'),
-        oauth_timestamp: "",
-        oauth_consumer_key: "GZDPfRPHCdDjaSMJTNXU0xSJd",
-        oauth_signature: "",
-        oauth_version: "1.0",
-        state: 'this is my twitter secret state'
+        client_id: '6343a5665998410e0d32c2ad20b8337ea923ea7899351c986756ce81b4f4b1d3',
+        response_type: 'code',
+        redirect_uri: 'http://localhost:3005/oauth',
+        scope: '',
+        state: 'this is unguessable! mwahahaha'
       }
 
       const queryString = Object.keys(options).map(key => {

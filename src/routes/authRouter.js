@@ -29,13 +29,8 @@ authRouter.get('/startoauth/:url', (req, res) => {
 
 const handleOauth = require('../middleware/handleOauth')
 authRouter.get('/oauth', handleOauth, (req, res, next) => {
-  console.log(req);
+  console.log('handleOauth');
   res.status(200).json({ message: 'signed in with oauth' })
-})
-
-authRouter.post('/twitteroauth', (req, res, next) => {
-  console.log('in twitteroauth route req', req);
-  console.log('in twitteroauth route req.body', req.body);
 })
 
 module.exports = authRouter

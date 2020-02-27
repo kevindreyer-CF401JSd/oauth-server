@@ -1,11 +1,11 @@
 const superagent = require('superagent')
 const User = require('../models/users')
 
-const TOKEN_SERVER_URL = 'https://api.twitter.com/oauth/access_token'
-const CLIENT_ID = process.env.TWITTER_ID_CODE
-const CLIENT_SECRET = process.env.TWITTER_APP_CLIENT_SECRET
+const TOKEN_SERVER_URL = 'https://github.com/oauth/token'
+const CLIENT_ID = '6343a5665998410e0d32c2ad20b8337ea923ea7899351c986756ce81b4f4b1d3'
+const CLIENT_SECRET = process.env.GITLAB_APP_CLIENT_SECRET
 const API_SERVER = 'http://localhost:3005/oauth'
-const REMOTE_API_ENDPOINT = 'https://api.twitter.com/user'
+const REMOTE_API_ENDPOINT = 'https://gitlab.com/api/v4/user'
 
 async function exchangeCodeForToken (code) {
   const response = await superagent
@@ -14,8 +14,8 @@ async function exchangeCodeForToken (code) {
       client_id: CLIENT_ID,
       client_secret: CLIENT_SECRET,
       code: code,
-      redirect_uri: API_SERVER,
-      state: 'this is unguessable! mwahahaha'
+      grant_type: 'authorization_code',
+      redirect_uri: API_SERVER
     })
   return response.body.access_token
 }
@@ -23,13 +23,13 @@ async function exchangeCodeForToken (code) {
 async function getRemoteUsername (token) {
   const response = await superagent
     .get(REMOTE_API_ENDPOINT)
-    .set('Authorization', `token ${token}`)
-    .set('user-agent', 'express-app')
+    // .set('Authorization', `token ${token}`)
+    // .set('user-agent', 'express-app')
   return response.body.login
 }
 
 async function getUser (username) {
-  console.log('username',username);
+  // console.log('username in GetUser',username);
   const user = await User.findOneAndUpdate({ username }, { username }, { new: true, upsert: true })
   const token = user.generateToken()
   return [user, token]
@@ -40,7 +40,7 @@ async function handleOauth (req, res, next) {
     // console.log('req.body', req.body);
     const { code } = req.query
     console.log('(1) CODE:', code)
-    const remoteToken = await exchangeCodeForToken(req.query.code)
+    const remoteToken = await exchangeCodeForToken(code)
     console.log('(2) ACCESS TOKEN:', remoteToken)
     const remoteUsername = await getRemoteUsername(remoteToken)
     console.log('(3) GITHUB USER:', remoteUsername)
