@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>My Amazing OAuth Test App</title>
+  </head>
+  <body>
+    <main>
+      <h1>Click below to login with GitLab</h1>
+      <a href="#" id="oauth">Login</a>
+    </main>
+
+    <script>
+      const URL = 'https://gitlab.com/oauth/authorize'
+      const options = {
+        client_id: '6343a5665998410e0d32c2ad20b8337ea923ea7899351c986756ce81b4f4b1d3',
+        redirect_uri: 'http://localhost:3005/oauth',
+        response_type: 'code',
+        state: 'this is unguessable! mwahahaha',
+        scope: ''
+      }
+
+//       https://gitlab.example.com/oauth/authorize?
+// client_id=APP_ID&
+// redirect_uri=REDIRECT_URI&
+// response_type=code&
+// state=YOUR_UNIQUE_STATE_HASH&
+// scope=REQUESTED_SCOPES
+
+      const queryString = Object.keys(options).map(key => {
+        return `${key}=${encodeURIComponent(options[key])}`
+      }).join('&')
+
+      const authURL = `${URL}?${queryString}`
+
+      const link = document.getElementById('oauth')
+      link.setAttribute('href', authURL)
+    </script>
+  </body>
+</html>

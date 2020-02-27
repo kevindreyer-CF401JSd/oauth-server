@@ -1,0 +1,37 @@
+{
+  "name": "oauth-server",
+  "version": "1.0.0",
+  "description": "App that performs an OAuth handshake.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevindreyer-CF401JSd/oauth-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevindreyer-CF401JSd/oauth-server/issues"
+  },
+  "homepage": "https://github.com/kevindreyer-CF401JSd/oauth-server#readme",
+  "devDependencies": {
+    "jest": "^25.1.0",
+    "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "base-64": "^0.1.0",
+    "bcrypt": "^4.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.2",
+    "morgan": "^1.9.1",
+    "path": "^0.12.7",
+    "superagent": "^5.2.2"
+  }
+}
